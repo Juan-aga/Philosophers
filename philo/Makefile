@@ -6,7 +6,7 @@
 #    By: juan-aga <juan_aga@student.42malaga.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 08:52:41 by juan-aga          #+#    #+#              #
-#    Updated: 2023/02/24 09:02:42 by juan-aga         ###   ########.fr        #
+#    Updated: 2023/02/24 13:28:43 by juan-aga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,10 @@ rm			= rm -rf
 
 SRC_DIR		= src/
 
-_SRC		= philo.c
+_SRC		= philo.c		\
+			 check_args.c	\
+			 init.c
+
 
 SRC			= ${addprefix ${SRC_DIR}, ${_SRC}}
 
