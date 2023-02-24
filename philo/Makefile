@@ -6,7 +6,7 @@
 #    By: juan-aga <juan_aga@student.42malaga.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 08:52:41 by juan-aga          #+#    #+#              #
-#    Updated: 2023/02/24 09:02:42 by juan-aga         ###   ########.fr        #
+#    Updated: 2023/02/24 16:38:25 by juan-aga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,32 +16,51 @@ CC			= gcc ${CFLAGS} ${HEADERS}
 
 CFLAGS		= -Wall -Werror -Wextra
 
-rm			= rm -rf
+RM			= rm -rf
 
 SRC_DIR		= src/
 
-_SRC		= philo.c
+OBJ_DIR		= obj/
+
+_SRC		= philo.c		\
+			 check_args.c	\
+			 init.c
+
 
 SRC			= ${addprefix ${SRC_DIR}, ${_SRC}}
 
-OBJ			= ${SRC:.c=.o}
+OBJ			= ${patsubst ${SRC_DIR}%.c, ${OBJ_DIR}%.o, ${SRC}}
 
 HEADERS		= -I ./include
 
-%.o: %.c
-			@${CC} -c $^  -o $@
+ifdef D
+	CFLAGS += -g 
+endif
+
+#		COLORS		#
+CYELLOW			=\033[1;33m
+CGREEN			=\033[0;32m
+CRED			=\033[0;91m
+CRESET			=\033[0m
+
+${OBJ_DIR}%.o: ${SRC_DIR}%.c
+			@mkdir -p obj
+			@${CC} -c $<  -o $@ && printf "${CGREEN}Compiling: ${CYELLOW}$(notdir $<\n)"
 
 ${NAME}:	${OBJ}
-			${CC} ${OBJ} -o ${NAME}
+			@${CC} ${OBJ} -o ${NAME}
+			@echo "\n${CYELLOW}${NAME}${CGREEN} compiled with flags: ${CYELLOW}${CFLAGS}\n${CRESET}"
 
 all:		${NAME}
 
 clean:
-			@${RM} ${OBJ}
+			@${RM} ${OBJ_DIR}
+			@echo "${CRED}${NAME} objects files were deleted.${CRESET}"
 
 fclean:		clean
 			@${RM} ${NAME}
+			@echo "${CRED}${NAME} was deleted.${CRESET}"
 
-re:			fclean all
+re:			fclean ${NAME}
 
 .PHONY:		all clean fclean re bonus
