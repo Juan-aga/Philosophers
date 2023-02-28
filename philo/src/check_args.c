@@ -6,7 +6,7 @@
 /*   By: juan-aga <juan_aga@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:15:07 by juan-aga          #+#    #+#             */
-/*   Updated: 2023/02/28 20:15:07 by juan-aga         ###   ########.fr       */
+/*   Updated: 2023/02/28 20:20:57 by juan-aga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	ft_check_args(char **str)
 {
 	int	i;
 
-	i = 1;
-	while (str[i])
+	i = 0;
+	while (str[++i])
 	{
 		if (!ft_check_number(str[i]))
 			return (0);
@@ -57,7 +57,7 @@ static int	ft_limits_phi(char *num)
 	long long	tmp;
 
 	tmp = ft_atoll_phi(num);
-	if (tmp < 1 || tmp > 2147483647)
+	if (tmp < 0 || tmp > 2147483647)
 		return (1);
 	return (0);
 }
