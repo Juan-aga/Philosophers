@@ -6,7 +6,7 @@
 /*   By: juan-aga <juan_aga@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:15:07 by juan-aga          #+#    #+#             */
-/*   Updated: 2023/02/24 13:32:53 by juan-aga         ###   ########.fr       */
+/*   Updated: 2023/02/28 18:38:28 by juan-aga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ int	ft_check_args(char **str)
 
 static int	ft_check_number(char *str)
 {
-	int	i;
-
-	i = 0;
 	if (ft_isnumber_phi(str))
 		return (0);
 	if (ft_limits_phi(str))

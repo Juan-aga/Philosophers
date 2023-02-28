@@ -6,7 +6,7 @@
 #    By: juan-aga <juan_aga@student.42malaga.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 08:52:41 by juan-aga          #+#    #+#              #
-#    Updated: 2023/02/24 16:38:25 by juan-aga         ###   ########.fr        #
+#    Updated: 2023/02/28 18:37:18 by juan-aga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ OBJ_DIR		= obj/
 _SRC		= philo.c		\
 			 check_args.c	\
 			 init.c
-
 
 SRC			= ${addprefix ${SRC_DIR}, ${_SRC}}
 
@@ -63,4 +62,4 @@ fclean:		clean
 
 re:			fclean ${NAME}
 
-.PHONY:		all clean fclean re bonus
+.PHONY:		all clean fclean re
