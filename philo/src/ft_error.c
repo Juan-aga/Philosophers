@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juan-aga <juan_aga@student.42malaga.c      +#+  +:+       +#+        */
+/*   By: juan-aga <juan-aga@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 09:03:13 by juan-aga          #+#    #+#             */
-/*   Updated: 2023/02/28 20:15:53 by juan-aga         ###   ########.fr       */
+/*   Created: 2023/02/28 20:06:26 by juan-aga          #+#    #+#             */
+/*   Updated: 2023/02/28 20:16:33 by juan-aga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <stdlib.h>
 
-int	main(int argc, char **argv)
+int	ft_error(int error)
 {
-	t_phi	phi;
-	char	*test;
-
-	test = calloc(sizeof(char *), 2);
-	(void) test;
-	if (argc != 5 && argc != 6)
-		return (ft_error(0));
-	if (!ft_check_args(argv))
-		return (ft_error(1));
-	ft_init(argv, &phi);
-	return (0);
+	if (error == 0)
+		printf("philo: invalid number of arguments.\n");
+	else if (error == 1)
+		printf("philo: not a valid number (between 1 abd 2147483647)\n");
+	return (1);
 }

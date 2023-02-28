@@ -6,7 +6,7 @@
 /*   By: juan-aga <juan_aga@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:15:07 by juan-aga          #+#    #+#             */
-/*   Updated: 2023/02/28 18:38:28 by juan-aga         ###   ########.fr       */
+/*   Updated: 2023/02/28 20:15:07 by juan-aga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_check_args(char **str)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	while (str[i])
 	{
 		if (!ft_check_number(str[i]))

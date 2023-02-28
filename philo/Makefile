@@ -6,7 +6,7 @@
 #    By: juan-aga <juan_aga@student.42malaga.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 08:52:41 by juan-aga          #+#    #+#              #
-#    Updated: 2023/02/28 19:44:32 by juan-aga         ###   ########.fr        #
+#    Updated: 2023/02/28 20:11:40 by juan-aga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ OBJ_DIR		= obj/
 
 _SRC		= philo.c		\
 			 check_args.c	\
-			 init.c
+			 init.c			\
+			 ft_error.c
 
 SRC			= ${addprefix ${SRC_DIR}, ${_SRC}}
 
