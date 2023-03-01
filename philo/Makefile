@@ -6,7 +6,7 @@
 #    By: juan-aga <juan_aga@student.42malaga.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 08:52:41 by juan-aga          #+#    #+#              #
-#    Updated: 2023/02/24 16:38:25 by juan-aga         ###   ########.fr        #
+#    Updated: 2023/02/28 20:11:40 by juan-aga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ CC			= gcc ${CFLAGS} ${HEADERS}
 
 CFLAGS		= -Wall -Werror -Wextra
 
+LIBS		= ../memory-leaks/memory_leaks.a
+
 RM			= rm -rf
 
 SRC_DIR		= src/
@@ -24,17 +26,18 @@ OBJ_DIR		= obj/
 
 _SRC		= philo.c		\
 			 check_args.c	\
-			 init.c
-
+			 init.c			\
+			 ft_error.c
 
 SRC			= ${addprefix ${SRC_DIR}, ${_SRC}}
 
 OBJ			= ${patsubst ${SRC_DIR}%.c, ${OBJ_DIR}%.o, ${SRC}}
 
-HEADERS		= -I ./include
+HEADERS		= -I ./include -I ../memory-leaks/include
 
 ifdef D
-	CFLAGS += -g 
+	CFLAGS += -g
+	MAKE += -g
 endif
 
 #		COLORS		#
@@ -47,9 +50,14 @@ ${OBJ_DIR}%.o: ${SRC_DIR}%.c
 			@mkdir -p obj
 			@${CC} -c $<  -o $@ && printf "${CGREEN}Compiling: ${CYELLOW}$(notdir $<\n)"
 
-${NAME}:	${OBJ}
-			@${CC} ${OBJ} -o ${NAME}
+${NAME}:	${LIBS} ${OBJ}
+			@${CC} ${OBJ} ${LIBS} -o ${NAME}
 			@echo "\n${CYELLOW}${NAME}${CGREEN} compiled with flags: ${CYELLOW}${CFLAGS}\n${CRESET}"
+
+${LIBS}:
+			@git submodule update --init
+			@${MAKE} -s -C ../memory-leaks
+		
 
 all:		${NAME}
 
@@ -63,4 +71,4 @@ fclean:		clean
 
 re:			fclean ${NAME}
 
-.PHONY:		all clean fclean re bonus
+.PHONY:		all clean fclean re
