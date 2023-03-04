@@ -6,14 +6,14 @@
 /*   By: juan-aga <juan_aga@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:04:48 by juan-aga          #+#    #+#             */
-/*   Updated: 2023/03/04 14:11:01 by juan-aga         ###   ########.fr       */
+/*   Updated: 2023/03/04 19:14:08 by juan-aga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-//# include "memory_leaks.h"
+# include "memory_leaks.h"
 # include <pthread.h>
 
 # define FORK_STR " has taken a fork\n"
@@ -30,7 +30,7 @@ typedef struct s_philo
 	time_t			last_eat;
 	int				eat_num;
 	pthread_mutex_t	eat_lock;
-	pthread_mutex_t	fork[2];
+	int				fork[2];
 	t_table			*table;
 }	t_philo;
 
@@ -46,6 +46,7 @@ typedef struct s_table
 	pthread_t		*pth_id;
 	pthread_mutex_t	print_lock;
 	pthread_mutex_t	stop_lock;
+	pthread_mutex_t	*fork_lock;
 	t_philo			*philo;
 }	t_table;
 

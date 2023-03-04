@@ -6,7 +6,7 @@
 /*   By: juan-aga <juan_aga@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:00:29 by juan-aga          #+#    #+#             */
-/*   Updated: 2023/03/04 14:11:30 by juan-aga         ###   ########.fr       */
+/*   Updated: 2023/03/04 19:10:48 by juan-aga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ static int	ft_philosophers(t_table *table)
 	int		i;
 
 	philo = malloc(sizeof(t_philo) * table->num_phi);
-	if (!philo)
+	philo->table = table;
+	philo->table->fork_lock = malloc(sizeof(pthread_mutex_t) * \
+		philo->table->num_phi);
+	if (!philo || !table->fork_lock)
 		return (1);
 	i = -1;
 	while (++i < table->num_phi)
@@ -53,8 +56,9 @@ static int	ft_philosophers(t_table *table)
 		philo[i].philo_id = i;
 		philo[i].eat_num = 0;
 		philo[i].table = table;
-		pthread_mutex_init(&philo[i].fork[0], 0);
-		philo[i].fork[1] = philo[(i + 1) % table->num_phi].fork[0];
+		pthread_mutex_init(&table->fork_lock[i], 0);
+		philo[i].fork[0] = i;
+		philo[i].fork[1] = (i + 1) % philo->table->num_phi;
 		pthread_mutex_init(&philo[i].eat_lock, 0);
 	}
 	pthread_mutex_init(&table->print_lock, 0);
@@ -121,7 +125,7 @@ static void	ft_finish(t_table *table)
 	while (++i < table->num_phi)
 	{
 		pthread_mutex_destroy(&table->philo[i].eat_lock);
-		pthread_mutex_destroy(table->philo[i].fork);
+		pthread_mutex_destroy(&table->fork_lock[i]);
 		pthread_join(table->pth_id[i], 0);
 	}
 	pthread_mutex_destroy(&table->print_lock);

@@ -6,7 +6,7 @@
 /*   By: juan-aga <juan-aga@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 20:06:26 by juan-aga          #+#    #+#             */
-/*   Updated: 2023/03/04 14:12:01 by juan-aga         ###   ########.fr       */
+/*   Updated: 2023/03/04 14:50:39 by juan-aga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ void	ft_print_phi(t_table *table, int i, char *str)
 {
 	pthread_mutex_lock(&table->print_lock);
 	if (!table->stop)
-		printf("%li %i %s", ft_time_diff(table->t_start, ft_now()), i + 1, str);
+		printf("%ld %d%s", ft_time_diff(table->t_start, ft_now()), i + 1, str);
 	pthread_mutex_unlock(&table->print_lock);
 }

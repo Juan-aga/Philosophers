@@ -6,7 +6,7 @@
 /*   By: juan-aga <juan-aga@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 11:16:27 by juan-aga          #+#    #+#             */
-/*   Updated: 2023/03/04 13:44:41 by juan-aga         ###   ########.fr       */
+/*   Updated: 2023/03/04 19:05:21 by juan-aga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	*ft_routine(void *phi)
 
 	philo = (t_philo *) phi;
 	table = philo->table;
-	ft_print_phi(table, philo->philo_id, "empieza\n");
 	if (philo->philo_id % 2)
 		ft_think_r(philo, 0);
 	while (!(table->stop))
@@ -41,11 +40,11 @@ static void	ft_eat_r(t_philo *philo)
 	t_table	*table;
 
 	table = philo->table;
-	pthread_mutex_lock(&philo->fork[0]);
+	pthread_mutex_lock(&table->fork_lock[philo->fork[0]]);
 	ft_print_phi(table, philo->philo_id, FORK_STR);
 	if (table->num_phi == 1)
 		ft_sleep(table, table->ttd + 1);
-	pthread_mutex_lock(&philo->fork[1]);
+	pthread_mutex_lock(&table->fork_lock[philo->fork[1]]);
 	ft_print_phi(table, philo->philo_id, FORK_STR);
 	ft_print_phi(table, philo->philo_id, EAT_STR);
 	pthread_mutex_lock(&philo->eat_lock);
@@ -55,8 +54,8 @@ static void	ft_eat_r(t_philo *philo)
 	pthread_mutex_lock(&philo->eat_lock);
 	philo->eat_num += 1;
 	pthread_mutex_unlock(&philo->eat_lock);
-	pthread_mutex_unlock(&philo->fork[1]);
-	pthread_mutex_unlock(&philo->fork[0]);
+	pthread_mutex_unlock(&table->fork_lock[philo->fork[1]]);
+	pthread_mutex_unlock(&table->fork_lock[philo->fork[0]]);
 }
 
 static void	ft_sleep_r(t_philo *philo)
