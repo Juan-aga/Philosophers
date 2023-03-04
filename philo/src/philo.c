@@ -6,7 +6,7 @@
 /*   By: juan-aga <juan_aga@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:03:13 by juan-aga          #+#    #+#             */
-/*   Updated: 2023/02/28 20:25:35 by juan-aga         ###   ########.fr       */
+/*   Updated: 2023/03/04 10:54:18 by juan-aga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	main(int argc, char **argv)
 {
-	t_phi	phi;
+	t_table	table;
 	char	*test;
 
 	test = calloc(sizeof(char *), 2);
@@ -24,8 +24,7 @@ int	main(int argc, char **argv)
 		return (ft_error(0));
 	if (!ft_check_args(argv))
 		return (ft_error(1));
-	ft_init(&argv[1], &phi);
-	if (phi.num_phi == 0)
-		return (ft_error(2));
+	if (ft_init(&argv[1], &table))
+		return (1);
 	return (0);
 }
