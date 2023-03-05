@@ -6,7 +6,7 @@
 /*   By: juan-aga <juan-aga@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 11:16:27 by juan-aga          #+#    #+#             */
-/*   Updated: 2023/03/05 17:30:40 by juan-aga         ###   ########.fr       */
+/*   Updated: 2023/03/05 18:46:31 by juan-aga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	*ft_routine(void *phi)
 	while (!(table->stop))
 	{
 		ft_eat_r(philo);
-		if (table->max_tte != -1 && philo->eat_num <= table->max_tte)
+		if (table->max_tte != -1 && philo->eat_num >= table->max_tte)
 			break ;
 		ft_sleep_r(philo);
 		ft_think_r(philo, 1);
@@ -104,7 +104,6 @@ static void	*ft_is_finish(void *phi)
 		{
 			ft_print_phi(table, philo->philo_id, DIED_STR);
 			table->stop = 1;
-			free(table->fork_lock);
 			free(table->philo);
 			exit(1);
 		}

@@ -6,7 +6,7 @@
 /*   By: juan-aga <juan_aga@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:04:48 by juan-aga          #+#    #+#             */
-/*   Updated: 2023/03/05 17:29:16 by juan-aga         ###   ########.fr       */
+/*   Updated: 2023/03/05 18:23:10 by juan-aga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 //# include "memory_leaks.h"
 # include <pthread.h>
 # include <semaphore.h>
+# include <signal.h>
 
 # define FORK_STR " has taken a fork\n"
 # define EAT_STR " is eating\n"

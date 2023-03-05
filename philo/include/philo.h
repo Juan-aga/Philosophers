@@ -6,14 +6,14 @@
 /*   By: juan-aga <juan_aga@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:04:48 by juan-aga          #+#    #+#             */
-/*   Updated: 2023/03/04 19:14:08 by juan-aga         ###   ########.fr       */
+/*   Updated: 2023/03/05 18:35:23 by juan-aga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-# include "memory_leaks.h"
+//# include "memory_leaks.h"
 # include <pthread.h>
 
 # define FORK_STR " has taken a fork\n"

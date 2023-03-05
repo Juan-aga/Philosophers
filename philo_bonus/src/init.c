@@ -6,7 +6,7 @@
 /*   By: juan-aga <juan_aga@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:00:29 by juan-aga          #+#    #+#             */
-/*   Updated: 2023/03/05 17:30:05 by juan-aga         ###   ########.fr       */
+/*   Updated: 2023/03/05 18:40:24 by juan-aga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ static int	ft_semaphore(t_table *table)
 	table->stop_lock = sem_open("/stop_lock", O_CREAT, S_IRWXU, 1);
 	table->fork_lock = sem_open("/fork_lock", O_CREAT, S_IRWXU, \
 		table->num_phi);
-	if (table->print_lock == SEM_FAILED || table->stop_lock <= SEM_FAILED || \
-		table->fork_lock <= SEM_FAILED)
+	if (table->print_lock == 0 || table->stop_lock == 0 || \
+		table->fork_lock == 0)
 		return (1);
 	return (0);
 }
