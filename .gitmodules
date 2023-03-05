@@ -1,3 +1,0 @@
-[submodule "memory-leaks"]
-	path = memory-leaks
-	url = git@github.com:Juan-aga/memory-leaks.git

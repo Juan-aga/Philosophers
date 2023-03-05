@@ -6,7 +6,7 @@
 #    By: juan-aga <juan_aga@student.42malaga.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 08:52:41 by juan-aga          #+#    #+#              #
-#    Updated: 2023/03/04 11:20:11 by juan-aga         ###   ########.fr        #
+#    Updated: 2023/03/05 18:55:06 by juan-aga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,6 @@ NAME		= philo
 CC			= gcc ${CFLAGS} ${HEADERS}
 
 CFLAGS		= -Wall -Werror -Wextra
-
-LIBS		= ../memory-leaks/memory_leaks.a
 
 RM			= rm -rf
 
@@ -35,8 +33,7 @@ SRC			= ${addprefix ${SRC_DIR}, ${_SRC}}
 
 OBJ			= ${patsubst ${SRC_DIR}%.c, ${OBJ_DIR}%.o, ${SRC}}
 
-HEADERS		= -I ./include -I ../memory-leaks/include
-
+HEADERS		= -I ./include
 ifdef D
 	CFLAGS += -g
 	MAKE += -g
@@ -53,7 +50,7 @@ ${OBJ_DIR}%.o: ${SRC_DIR}%.c
 			@${CC} -c $<  -o $@ && printf "${CGREEN}Compiling: ${CYELLOW}$(notdir $<\n)"
 
 ${NAME}:	${LIBS} ${OBJ}
-			@${CC} ${OBJ} ${LIBS} -o ${NAME}
+			@${CC} ${OBJ} -o ${NAME}
 			@echo "\n${CYELLOW}${NAME}${CGREEN} compiled with flags: ${CYELLOW}${CFLAGS}\n${CRESET}"
 
 ${LIBS}:
