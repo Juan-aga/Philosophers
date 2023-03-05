@@ -6,12 +6,13 @@
 /*   By: juan-aga <juan-aga@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 11:16:27 by juan-aga          #+#    #+#             */
-/*   Updated: 2023/03/05 17:19:48 by juan-aga         ###   ########.fr       */
+/*   Updated: 2023/03/05 17:30:40 by juan-aga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 #include <pthread.h>
+#include <stdlib.h>
 
 static void	ft_eat_r(t_philo *philo);
 static void	ft_sleep_r(t_philo *philo);

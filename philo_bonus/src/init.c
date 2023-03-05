@@ -6,7 +6,7 @@
 /*   By: juan-aga <juan_aga@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:00:29 by juan-aga          #+#    #+#             */
-/*   Updated: 2023/03/05 17:23:22 by juan-aga         ###   ########.fr       */
+/*   Updated: 2023/03/05 17:30:05 by juan-aga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <sys/wait.h>
+#include <unistd.h>
 
 static int	ft_philosophers(t_table *table);
 static int	ft_semaphore(t_table *table);
