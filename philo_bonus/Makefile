@@ -6,11 +6,11 @@
 #    By: juan-aga <juan_aga@student.42malaga.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 08:52:41 by juan-aga          #+#    #+#              #
-#    Updated: 2023/03/04 11:20:11 by juan-aga         ###   ########.fr        #
+#    Updated: 2023/03/04 20:10:52 by juan-aga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= philo
+NAME		= philo_bonus
 
 CC			= gcc ${CFLAGS} ${HEADERS}
 
