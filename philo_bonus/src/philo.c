@@ -6,7 +6,7 @@
 /*   By: juan-aga <juan_aga@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:03:13 by juan-aga          #+#    #+#             */
-/*   Updated: 2023/03/04 19:21:52 by juan-aga         ###   ########.fr       */
+/*   Updated: 2023/03/05 17:16:13 by juan-aga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,6 @@ int	main(int argc, char **argv)
 
 static void	ft_free_phi(t_table *table)
 {
-	if (table->fork_lock)
-		free(table->fork_lock);
-	if (table->pth_id)
-		free(table->pth_id);
 	if (table->philo)
 		free(table->philo);
 }

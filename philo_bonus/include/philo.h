@@ -6,7 +6,7 @@
 /*   By: juan-aga <juan_aga@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 09:04:48 by juan-aga          #+#    #+#             */
-/*   Updated: 2023/03/05 18:35:23 by juan-aga         ###   ########.fr       */
+/*   Updated: 2023/03/05 18:23:10 by juan-aga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 //# include "memory_leaks.h"
 # include <pthread.h>
+# include <semaphore.h>
+# include <signal.h>
 
 # define FORK_STR " has taken a fork\n"
 # define EAT_STR " is eating\n"
@@ -26,28 +28,28 @@ typedef struct s_table	t_table;
 
 typedef struct s_philo
 {
-	int				philo_id;
-	time_t			last_eat;
-	int				eat_num;
-	pthread_mutex_t	eat_lock;
-	int				fork[2];
-	t_table			*table;
+	int			philo_id;
+	pid_t		pid;
+	time_t		last_eat;
+	int			eat_num;
+	sem_t		eat_lock;
+	pthread_t	finish;
+	t_table		*table;
 }	t_philo;
 
 typedef struct s_table
 {
-	int				num_phi;
-	int				ttd;
-	int				tte;
-	int				tts;
-	int				max_tte;
-	int				stop;
-	time_t			t_start;
-	pthread_t		*pth_id;
-	pthread_mutex_t	print_lock;
-	pthread_mutex_t	stop_lock;
-	pthread_mutex_t	*fork_lock;
-	t_philo			*philo;
+	int		num_phi;
+	int		ttd;
+	int		tte;
+	int		tts;
+	int		max_tte;
+	int		stop;
+	time_t	t_start;
+	sem_t	*print_lock;
+	sem_t	*stop_lock;
+	sem_t	*fork_lock;
+	t_philo	*philo;
 }	t_table;
 
 int			ft_check_args(char **str);
