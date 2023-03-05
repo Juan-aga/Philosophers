@@ -6,7 +6,7 @@
 /*   By: juan-aga <juan_aga@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:00:29 by juan-aga          #+#    #+#             */
-/*   Updated: 2023/03/05 18:40:24 by juan-aga         ###   ########.fr       */
+/*   Updated: 2023/03/05 18:58:44 by juan-aga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ static void	ft_exit_phi(t_table *table)
 	int	status;
 
 	i = -1;
-	while (!table->stop)
+	while (++i < table->num_phi)
 	{
 		waitpid(-1, &status, 0);
 		if (status != 0)
